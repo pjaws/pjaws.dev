@@ -36,6 +36,7 @@ const StyledLink = styled.a`
 
 const MarkdownParagraph = styled.p`
   line-height: 2em;
+  font-size: 1.2em;
 
   &:first-child {
     margin-top: 0em;
