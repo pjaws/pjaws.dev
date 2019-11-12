@@ -29,13 +29,13 @@ const ImageSubtitle = styled(Box)`
 
   ${props => props.x}: 0;
   ${props => props.y}: 0;
-  
+
   ${props =>
     props.x === 'left'
       ? `padding-right: ${BORDER_SPACING};`
       : `padding-left: ${BORDER_SPACING};`}
   clip-path: ${props => BORDER_PATH_MAP[`${props.y}-${props.x}`]};
-  
+
   ${props =>
     props.round &&
     `border-radius: ${BORDER_RADIUS_MAP[`${props.y}-${props.x}`]};`}

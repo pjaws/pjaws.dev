@@ -37,7 +37,7 @@ const ScrollAnimation = keyframes`
 `;
 
 const Mouse = styled.rect.attrs(props => ({
-  stroke: props.theme.colors.primary,
+  stroke: props.theme.colors.secondaryLight,
   strokeWidth: '3',
 }))``;
 

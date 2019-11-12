@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react';
 import { StaticQuery, graphql } from 'gatsby';
-import { Heading, Flex, Box, Text } from 'rebass';
-import TextLoop from 'react-text-loop';
+import { Heading, Flex, Box } from 'rebass';
 import { SectionLink } from 'react-scroll-section';
 import Section from '../components/Section';
 import SocialLink from '../components/SocialLink';
@@ -48,7 +47,6 @@ const LandingPage = () => (
         query SiteTitleQuery {
           contentfulAbout {
             name
-            roles
             socialLinks {
               id
               url
@@ -63,20 +61,20 @@ const LandingPage = () => (
           }
         }
       `}
-      render={({ contentfulAbout, site }) => {
-        const { name, socialLinks, roles } = contentfulAbout;
-        const { deterministicBehaviour } = site.siteMetadata;
+      render={({ contentfulAbout }) => {
+        const { name, socialLinks } = contentfulAbout;
 
         return (
           <Fragment>
             <Heading
               textAlign="center"
               as="h1"
-              color="primary"
+              color="secondaryLight"
               fontSize={[5, 6, 8]}
               mb={[3, 4, 5]}
+              css={{ letterSpacing: '2px' }}
             >
-              {`Hello, I'm ${name}!`}
+              {name}
             </Heading>
 
             <Heading
@@ -87,7 +85,7 @@ const LandingPage = () => (
               textAlign="center"
               style={centerHorizontally}
             >
-              <TextLoop interval={5000}>
+              {/* <TextLoop interval={5000}>
                 {roles
                   .sort(() => deterministicBehaviour || Math.random() - 0.5)
                   .map(text => (
@@ -95,18 +93,20 @@ const LandingPage = () => (
                       {text}
                     </Text>
                   ))}
-              </TextLoop>
+              </TextLoop> */}
             </Heading>
 
             <Flex alignItems="center" justifyContent="center" flexWrap="wrap">
               {socialLinks.map(({ id, ...rest }) => (
                 <Box mx={3} fontSize={[5, 6, 6]} key={id}>
-                  <SocialLink {...rest} />
+                  <SocialLink color="secondaryLight" {...rest} />
                 </Box>
               ))}
             </Flex>
             <SectionLink section="about">
-              {({ onClick }) => <MouseIcon onClick={onClick} />}
+              {({ onClick }) => (
+                <MouseIcon color="secondaryLight" onClick={onClick} />
+              )}
             </SectionLink>
           </Fragment>
         );

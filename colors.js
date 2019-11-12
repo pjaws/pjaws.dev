@@ -1,12 +1,18 @@
 module.exports = {
-  background: '#FFFFFF',
-  backgroundDark: '#f0e6f6',
+  background: '#212529',
+  backgroundDark: '#868e96',
 
-  primary: '#7c37ad',
-  primaryLight: '#ae66df',
-  primaryDark: '#4b007d',
+  white: '#f8f9fa',
+  black: '#16181b',
 
-  secondary: '#ff4081',
-  secondaryLight: '#ff79b0',
-  secondaryDark: '#c60055',
+  heading: '#96f2d7',
+  text: '#f8f9fa',
+
+  primary: '#748ffc',
+  primaryLight: '#bac8ff',
+  primaryDark: '#4c6ef5',
+
+  secondary: '#38d9a9',
+  secondaryLight: '#96f2d7',
+  secondaryDark: '#12b886',
 };

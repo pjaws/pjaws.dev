@@ -9,14 +9,16 @@ import Helmet from './Helmet';
 const GlobalStyle = createGlobalStyle`
   *,
   *::after,
-  *::before { 
+  *::before {
     box-sizing: inherit;
     }
 
   body {
-    box-sizing: border-box; 
-    margin: 0;
-    font-family: Cabin, 'Open Sans', sans-serif;
+    box-sizing: border-box;
+		margin: 0;
+		background-color: ${colors.background};
+		color: ${colors.text};
+    font-family: Cabin, 'Open Sans', 'Helvetica Neue', sans-serif, 'Open Sans', sans-serif;
     font-display: swap;
     font-display: fallback;
     overflow-x: hidden;

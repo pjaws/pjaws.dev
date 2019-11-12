@@ -30,7 +30,7 @@ const Helmet = ({ theme = {} }) => (
     `}
     render={data => {
       const { name, description, profile } = data.contentfulAbout;
-      const title = `${name} Portfolio`;
+      const title = `${name} - Front End Developer based in San Francisco`;
 
       return (
         <ReactHelmet htmlAttributes={{ lang: 'en' }}>

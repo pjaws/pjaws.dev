@@ -7,42 +7,8 @@ import Fade from 'react-reveal/Fade';
 import Section from '../components/Section';
 import { CardContainer, Card } from '../components/Card';
 import SocialLink from '../components/SocialLink';
-import Triangle from '../components/Triangle';
 import ImageSubtitle from '../components/ImageSubtitle';
 import Hide from '../components/Hide';
-
-const Background = () => (
-  <div>
-    <Triangle
-      color="secondaryLight"
-      height={['80vh', '80vh']}
-      width={['100vw', '100vw']}
-      invertX
-    />
-
-    <Triangle
-      color="background"
-      height={['50vh', '20vh']}
-      width={['50vw', '50vw']}
-      invertX
-    />
-
-    <Triangle
-      color="primaryDark"
-      height={['25vh', '40vh']}
-      width={['75vw', '60vw']}
-      invertX
-      invertY
-    />
-
-    <Triangle
-      color="backgroundDark"
-      height={['25vh', '20vh']}
-      width={['100vw', '100vw']}
-      invertY
-    />
-  </div>
-);
 
 const CARD_HEIGHT = '200px';
 
@@ -53,7 +19,7 @@ const Title = styled(Text)`
   font-weight: 600;
   text-transform: uppercase;
   display: table;
-  border-bottom: ${props => props.theme.colors.primary} 5px solid;
+  border-bottom: ${props => props.theme.colors.secondary} 5px solid;
 `;
 
 const TextContainer = styled.div`
@@ -80,7 +46,7 @@ const ImageContainer = styled.div`
 const ProjectImage = styled(Image)`
   width: ${CARD_HEIGHT};
   height: ${CARD_HEIGHT};
-  padding: 40px;
+  padding: 48px;
   margin-top: 0px;
 
   ${MEDIA_QUERY_SMALL} {
@@ -116,11 +82,11 @@ const Project = ({
     <Flex style={{ height: CARD_HEIGHT }}>
       <TextContainer>
         <span>
-          <Title my={2} pb={1}>
+          <Title my={2} pb={1} color="background">
             {name}
           </Title>
         </span>
-        <Text width={[1]} style={{ overflow: 'auto' }}>
+        <Text width={[1]} style={{ overflow: 'auto' }} color="background">
           {description}
         </Text>
       </TextContainer>
@@ -133,26 +99,32 @@ const Project = ({
               float: 'right',
             }}
           >
-            <Box mx={1} fontSize={5}>
-              <SocialLink
-                name="Check repository"
-                fontAwesomeIcon="github"
-                url={repositoryUrl}
-              />
-            </Box>
-            <Box mx={1} fontSize={5}>
-              <SocialLink
-                name="See project"
-                fontAwesomeIcon="globe"
-                url={projectUrl}
-              />
-            </Box>
+            {repositoryUrl && (
+              <Box mx={1} fontSize={5}>
+                <SocialLink
+                  name="Check repository"
+                  fontAwesomeIcon="github"
+                  url={repositoryUrl}
+                  color="secondary"
+                />
+              </Box>
+            )}
+            {projectUrl && (
+              <Box mx={1} fontSize={5}>
+                <SocialLink
+                  name="See project"
+                  fontAwesomeIcon="globe"
+                  url={projectUrl}
+                  color="secondary"
+                />
+              </Box>
+            )}
           </Flex>
           <ImageSubtitle bg="primary" color="white" y="bottom" x="right" round>
             {type}
           </ImageSubtitle>
           <Hide query={MEDIA_QUERY_SMALL}>
-            <ImageSubtitle bg="backgroundDark">{publishedDate}</ImageSubtitle>
+            <ImageSubtitle bg="primary">{publishedDate}</ImageSubtitle>
           </Hide>
         </ProjectTag>
       </ImageContainer>
@@ -176,7 +148,7 @@ Project.propTypes = {
 };
 
 const Projects = () => (
-  <Section.Container id="projects" Background={Background}>
+  <Section.Container id="projects">
     <Section.Header name="Projects" icon="💻" label="notebook" />
     <StaticQuery
       query={graphql`
@@ -187,7 +159,6 @@ const Projects = () => (
               name
               description
               projectUrl
-              repositoryUrl
               publishedDate(formatString: "YYYY")
               type
               logo {

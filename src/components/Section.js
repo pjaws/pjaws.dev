@@ -19,11 +19,8 @@ const SectionContainer = styled.div`
   scroll-behavior: smooth;
 `;
 
-const DefaultBackground = () => <div />;
-
-const Container = ({ id, children, Background = DefaultBackground }) => (
+const Container = ({ id, children }) => (
   <Section id={id} style={{ position: 'relative' }}>
-    <Background />
     <SectionContainer>{children}</SectionContainer>
   </Section>
 );
@@ -31,12 +28,11 @@ const Container = ({ id, children, Background = DefaultBackground }) => (
 Container.propTypes = {
   id: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
-  Background: PropTypes.func,
 };
 
 const Header = ({ name, icon = '', label = '' }) => (
   <Slide left>
-    <Heading color="secondaryDark" mb={4}>
+    <Heading color="heading" mb={4}>
       <LinkAnimated selected>
         {name}
         {icon && (

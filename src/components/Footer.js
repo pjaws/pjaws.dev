@@ -17,10 +17,10 @@ const FooterContainer = styled.div`
 `;
 
 const TextFooter = styled(Text)`
-  color: ${props => props.theme.colors.background};
+  color: ${props => props.theme.colors.text};
 
   & a {
-    color: ${props => props.theme.colors.background};
+    color: ${props => props.theme.colors.text};
   }
 `;
 
@@ -30,7 +30,6 @@ const Footer = () => (
       query FooterQuery {
         contentfulAbout {
           name
-          roles
           socialLinks {
             id
             url
@@ -41,29 +40,37 @@ const Footer = () => (
       }
     `}
     render={data => {
-      const { name, socialLinks } = data.contentfulAbout;
+      const { socialLinks } = data.contentfulAbout;
 
       return (
         <Box p={3} backgroundColor="primaryDark" as="footer">
           <FooterContainer>
             <Fade left>
-              <TextFooter fontSize={[2, 3]}>
-                <span>{`${name} Portfolio - Powered by `}</span>
+              <TextFooter fontSize={[2, 3]} color="text">
+                <span>Powered by </span>
                 <Link href="https://www.gatsbyjs.org/">Gatsby</Link>
                 <span> and </span>
                 <Link href="https://www.contentful.com/" mr={1}>
-                  Contentful
+                  Contentful.
                 </Link>
-                <span role="img" aria-label="heart">
-                  ❤️
-                </span>
+                <span> Icons made by </span>
+                <Link
+                  href="https://www.flaticon.com/authors/freepik"
+                  title="Freepik"
+                >
+                  Freepik
+                </Link>
+                <span> from </span>
+                <Link href="https://www.flaticon.com/" title="Flaticon">
+                  www.flaticon.com
+                </Link>
               </TextFooter>
             </Fade>
             <Flex>
               <Fade right>
                 {socialLinks.map(({ id, ...rest }) => (
                   <Box mx={[2, 3]} fontSize={[4, 5]} key={id}>
-                    <SocialLink {...rest} color="background" />
+                    <SocialLink {...rest} color="text" />
                   </Box>
                 ))}
               </Fade>

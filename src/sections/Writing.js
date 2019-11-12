@@ -16,13 +16,6 @@ const MEDIUM_URL = 'https://medium.com';
 const Background = () => (
   <div>
     <Triangle
-      color="backgroundDark"
-      height={['15vh', '10vh']}
-      width={['100vw', '100vw']}
-      invertX
-    />
-
-    <Triangle
       color="secondary"
       height={['50vh', '40vh']}
       width={['70vw', '40vw']}
@@ -45,6 +38,7 @@ const CoverImage = styled.img`
 `;
 
 const EllipsisHeading = styled(Heading)`
+  color: ${props => props.theme.colors.background};
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-inline-box;
